@@ -1,0 +1,64 @@
+﻿<meta charset="utf-8" />
+@model CanalNoticias.Models.Noticia
+@inject CanalNoticias.Services.ListasService ListasService
+
+<form asp-action="Save">
+    <div class="form-horizontal">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label asp-for="Titulo" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Titulo" class="form-control" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Descricao" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Descricao" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+        </div>
+        @if (Model.Id > 0)
+        {
+            <div class="form-group">
+                <label asp-for="Data" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Data" class="form-control" />
+                    <span asp-validation-for="Data" class="text-danger"></span>
+                </div>
+            </div>
+        }
+        <div class="form-group">
+            <label asp-for="EstiloMusical" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select class="form-control" asp-for="EstiloMusical" asp-items="@ListasService.ObterEstilos()"></select>
+                <span asp-validation-for="EstiloMusical" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FotoPrincipal" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select class="form-control" asp-for="FotoPrincipal" asp-items="@ListasService.ObterBandas()"></select>
+                <span asp-validation-for="FotoPrincipal" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="EhDestaque" />
+                    <label asp-for="EhDestaque"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <p style="text-align:right">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </p>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

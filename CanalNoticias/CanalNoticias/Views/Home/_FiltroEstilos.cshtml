@@ -1,0 +1,10 @@
+﻿@inject CanalNoticias.Services.ListasService ListasService
+<div class="filters">
+    <ul class="nav nav-pills">
+        <li class="active"><a href="#" data-filter="*">Todos</a></li>
+        @foreach (var item in ListasService.ObterEstilos())
+        {
+            <li><a href="#" data-filter=".@item.Value">@item.Text</a></li>
+        }
+    </ul>
+</div>

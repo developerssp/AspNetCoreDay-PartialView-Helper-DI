@@ -1,0 +1,23 @@
+﻿<meta charset="utf-8" />
+@model CanalNoticias.Models.Noticia
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-sm-8">
+        <article>
+            <h1>@Model.Titulo</h1>
+            <div>
+                <imagem-banda foto="@Model.FotoPrincipal" />
+            </div>
+            <p>
+                @Model.Descricao
+            </p>
+        </article>
+    </div>
+    <div class="col-sm-4">
+        <h3>Notícias em destaque</h3>
+        @await Component.InvokeAsync("NoticiasEmDestaque")        
+    </div>
+</div>

@@ -1,0 +1,66 @@
+﻿<meta charset="utf-8" />
+@model IEnumerable<CanalNoticias.Models.Noticia>
+@inject CanalNoticias.Services.ListasService ListasService
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Notícias</h2>
+<hr />
+<div id="detalhes">
+    <p style="text-align:right">
+        <a class="btnVisualizarDetalhes btn btn-default" asp-action="Create">Incluir notícia</a>
+    </p>
+</div>
+<hr />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FotoPrincipal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EhDestaque)
+            </th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @ListasService.ObterNomeBanda(item.FotoPrincipal)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.EhDestaque)
+                </td>
+                <td>
+                    <a class="btnVisualizarDetalhes btn btn-xs btn-default" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                    <a class="btn btn-xs btn-default" asp-action="Delete" asp-route-id="@item.Id">Remover</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.btnVisualizarDetalhes').on('click', function (e) {
+                $.get($(this).prop('href'), function (response) {
+                    $('#detalhes').html(response)
+                });
+                e.preventDefault();
+            });
+        });
+    </script>
+}
