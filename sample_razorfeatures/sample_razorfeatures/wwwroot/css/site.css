@@ -18,9 +18,15 @@ textarea {
 }
 
 /* Carousel */
+.item {
+    max-height: 400px;
+    overflow: hidden;
+}
+
 .carousel-caption p {
     font-size: 20px;
     line-height: 1.4;
+    background-color: rgba(0,0,0,.5);
 }
 
 /* buttons and links extension to use brackets: [ click me ] */
@@ -36,9 +42,10 @@ textarea {
     padding-left: 0.5em;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
+.carousel-img {
     width: 100%;
+    object-fit: cover;
+    background-position: top;
 }
 
 /* Hide/rearrange for smaller screens */
@@ -47,4 +54,71 @@ textarea {
     .carousel-caption {
         display: none;
     }
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: #2f2f2f;
+}
+
+table tr {
+    vertical-align: middle;
+}
+
+#detalhes {
+    width: 75%;
+}
+
+/** LISTS **/
+ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+    ul li {
+        margin: 0px;
+        padding: 0px;
+        display: inline-block;
+    }
+
+.item_list {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    min-width: 300px;
+    width: 350px;
+}
+
+    .item_list > a:hover {
+        background-color: rgba(0,0,0,.3);
+        height: 100%;
+        width: 100%;
+        display: block;
+    }
+
+.content_small {
+    display: inline;
+    font-weight: 100;
+    min-width: 350px;
+}
+
+.content_small_left {
+    min-width: 100px;
+    display: inline-block;
+}
+
+    .content_small_left > img {
+        height: 70px;
+        width: 90px;
+    }
+
+.content_small_right {
+    display: inline-block;
+    width: 68%;
+    vertical-align: middle;
+    text-align: justify;
+}
+/*ISOTOPE*/
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    background-color: #cd3c2e;
 }

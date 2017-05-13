@@ -11,6 +11,10 @@
   <PropertyGroup>
     <UserSecretsId>aspnet-sample_razorfeatures-14f8eb3f-aa22-4155-9397-88648ec56734</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\lib\isotope\isotope.pkgd.min.js" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
