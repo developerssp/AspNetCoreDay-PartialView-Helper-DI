@@ -31,12 +31,12 @@ namespace CanalNoticias.Services
 
         }
 
-        public IList<SelectListItem> ObterEstilos()
+        public IEnumerable<SelectListItem> ObterEstilos()
         {
             return estilos;
         }
 
-        public IList<SelectListItem> ObterBandas()
+        public IEnumerable<SelectListItem> ObterBandas()
         {
             return bandas;
         }
